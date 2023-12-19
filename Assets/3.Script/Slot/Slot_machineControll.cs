@@ -5,6 +5,8 @@ using UnityEngine;
 public class Slot_machineControll : MonoBehaviour
 {
     public InCoin inCoin;
+    public GameManager gameManager;
+
     public GameObject Slots;
     public GameObject Coinout;
     public StartGame startbtn;
@@ -14,6 +16,7 @@ public class Slot_machineControll : MonoBehaviour
 
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         slot = new GameObject[3];
         inCoin = FindObjectOfType<InCoin>();
         Slots = GameObject.Find("Slots");
@@ -32,7 +35,7 @@ public class Slot_machineControll : MonoBehaviour
     }
     private void Update()
     {
-        if (inCoin.incoin && startbtn.Gamestart)
+        if (gameManager.incoin && startbtn.Gamestart)
         {
             int slotspeed1 = Random.Range(1000, 1500);
             int slotspeed2 = Random.Range(1000, 1500);
@@ -49,10 +52,10 @@ public class Slot_machineControll : MonoBehaviour
             else
             {
                 Stop = 0f;
-                inCoin.incoin = false;
+                gameManager.incoin = false;
                 startbtn.Gamestart = false;
                 Result();
-                inCoin.SetCoin = 0;
+                gameManager.SetCoin = 0;
             }
 
 
@@ -216,49 +219,49 @@ public class Slot_machineControll : MonoBehaviour
         {
             if(slots[0].Equals(8)|| slots[0].Equals(7))
             {
-                for (int i = 0; i < inCoin.SetCoin*3; i++)
+                for (int i = 0; i < gameManager.SetCoin*3; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
             }
             else if(slots[0].Equals(6))
             {
-                for (int i = 0; i < inCoin.SetCoin * 6; i++)
+                for (int i = 0; i < gameManager.SetCoin * 6; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
             }
             else if(slots[0].Equals(5))
             {
-                for (int i = 0; i < inCoin.SetCoin * 12; i++)
+                for (int i = 0; i < gameManager.SetCoin * 12; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
             }
             else if (slots[0].Equals(4))
             {
-                for (int i = 0; i < inCoin.SetCoin * 24; i++)
+                for (int i = 0; i < gameManager.SetCoin * 24; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
             }
             else if (slots[0].Equals(3))
             {
-                for (int i = 0; i < inCoin.SetCoin * 48; i++)
+                for (int i = 0; i < gameManager.SetCoin * 48; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
             }
             else if (slots[0].Equals(2))
             {
-                for (int i = 0; i < inCoin.SetCoin * 96; i++)
+                for (int i = 0; i < gameManager.SetCoin * 96; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
             }
             else if (slots[0].Equals(1))
             {
-                for (int i = 0; i < inCoin.SetCoin * 192; i++)
+                for (int i = 0; i < gameManager.SetCoin * 192; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
@@ -269,27 +272,27 @@ public class Slot_machineControll : MonoBehaviour
         //단일 7, 7더블
         if(slots[0].Equals(1)|| slots[1].Equals(1) || slots[2].Equals(1))
         {
-            for (int i = 0; i < inCoin.SetCoin * 6; i++)
+            for (int i = 0; i < gameManager.SetCoin * 6; i++)
             {
                 Instantiate(Coin, Coinout.transform);
             }
             if(slots[0].Equals(1) && slots[1].Equals(1))
             {
-                for (int i = 0; i < inCoin.SetCoin * 12; i++)
+                for (int i = 0; i < gameManager.SetCoin * 12; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
             }
             else if(slots[0].Equals(1) && slots[2].Equals(1))
             {
-                for (int i = 0; i < inCoin.SetCoin * 12; i++)
+                for (int i = 0; i < gameManager.SetCoin * 12; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
             }
             else if(slots[1].Equals(1) && slots[2].Equals(1))
             {
-                for (int i = 0; i < inCoin.SetCoin * 12; i++)
+                for (int i = 0; i < gameManager.SetCoin * 12; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
@@ -299,27 +302,27 @@ public class Slot_machineControll : MonoBehaviour
         //단일 Bar, Bar더블
         if (slots[0].Equals(2) || slots[1].Equals(2) || slots[2].Equals(2))
         {
-            for (int i = 0; i < inCoin.SetCoin * 3; i++)
+            for (int i = 0; i < gameManager.SetCoin * 3; i++)
             {
                 Instantiate(Coin, Coinout.transform);
             }
             if (slots[0].Equals(2) && slots[1].Equals(2))
             {
-                for (int i = 0; i < inCoin.SetCoin * 6; i++)
+                for (int i = 0; i < gameManager.SetCoin * 6; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
             }
             else if (slots[0].Equals(2) && slots[2].Equals(2))
             {
-                for (int i = 0; i < inCoin.SetCoin * 6; i++)
+                for (int i = 0; i < gameManager.SetCoin * 6; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
             }
             else if (slots[1].Equals(2) && slots[2].Equals(2))
             {
-                for (int i = 0; i < inCoin.SetCoin * 6; i++)
+                for (int i = 0; i < gameManager.SetCoin * 6; i++)
                 {
                     Instantiate(Coin, Coinout.transform);
                 }
@@ -330,42 +333,42 @@ public class Slot_machineControll : MonoBehaviour
         //더블
         if (slots[0].Equals(8) && slots[1].Equals(8))
         {
-            for (int i = 0; i < inCoin.SetCoin * 2; i++)
+            for (int i = 0; i < gameManager.SetCoin * 2; i++)
             {
                 Instantiate(Coin, Coinout.transform);
             }
         }
         else if (slots[0].Equals(8) && slots[2].Equals(8))
         {
-            for (int i = 0; i < inCoin.SetCoin * 2; i++)
+            for (int i = 0; i < gameManager.SetCoin * 2; i++)
             {
                 Instantiate(Coin, Coinout.transform);
             }
         }
         else if (slots[1].Equals(8) && slots[2].Equals(8))
         {
-            for (int i = 0; i < inCoin.SetCoin * 2; i++)
+            for (int i = 0; i < gameManager.SetCoin * 2; i++)
             {
                 Instantiate(Coin, Coinout.transform);
             }
         }
         if (slots[0].Equals(8) && slots[1].Equals(7))
         {
-            for (int i = 0; i < inCoin.SetCoin * 2; i++)
+            for (int i = 0; i < gameManager.SetCoin * 2; i++)
             {
                 Instantiate(Coin, Coinout.transform);
             }
         }
         else if (slots[0].Equals(8) && slots[2].Equals(7))
         {
-            for (int i = 0; i < inCoin.SetCoin * 2; i++)
+            for (int i = 0; i < gameManager.SetCoin * 2; i++)
             {
                 Instantiate(Coin, Coinout.transform);
             }
         }
         else if (slots[1].Equals(8) && slots[2].Equals(7))
         {
-            for (int i = 0; i < inCoin.SetCoin * 2; i++)
+            for (int i = 0; i < gameManager.SetCoin * 2; i++)
             {
                 Instantiate(Coin, Coinout.transform);
             }

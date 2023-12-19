@@ -3,18 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InCoin : MonoBehaviour
-{
-    public bool incoin = false;
-    public int SetCoin;
+{    public GameManager gameManager;
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void Start()
     {
-        if(collision.gameObject.CompareTag("Right_Hand"))
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Right_Hand"))
         {
-            Destroy(collision.gameObject);
-            Debug.Log("인서트 코인");
-            SetCoin += 1;
-            incoin = true;
+            if(gameManager.Coins>0)
+            {
+                Destroy(gameManager.wallet.transform.GetChild(0).gameObject);
+                Debug.Log("인서트 코인");
+                gameManager.SetCoin += 1;
+                gameManager.incoin = true;
+            }
+            else
+            {
+                Debug.Log("돈없어");
+            }
+            
         }
     }
 }
