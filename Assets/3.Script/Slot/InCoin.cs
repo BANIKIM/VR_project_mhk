@@ -11,22 +11,19 @@ public class InCoin : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    public void InCoins()
     {
-        if (other.gameObject.CompareTag("Right_Hand"))
+        if (gameManager.Coins > 0)
         {
-            if(gameManager.Coins>0)
-            {
-                Destroy(gameManager.wallet.transform.GetChild(0).gameObject);
-                Debug.Log("인서트 코인");
-                gameManager.SetCoin += 1;
-                gameManager.incoin = true;
-            }
-            else
-            {
-                Debug.Log("돈없어");
-            }
-            
+            Destroy(gameManager.wallet.transform.GetChild(0).gameObject);
+            Debug.Log("인서트 코인");
+            gameManager.SetCoin += 1;
+            gameManager.incoin = true;
+        }
+        else
+        {
+            Debug.Log("돈없어");
         }
     }
 }
